@@ -1,24 +1,21 @@
 let container = document.querySelector(".container");
 container.style = "display:flex;"
 
-let columnas = (number) => {
-  let columnaContainer = document.createElement("div"); 
-  columnaContainer.style ="background-color: grey;"
- for (i = 1; i <= number; i++) {
-    let cuadrado = document.createElement("div");
-    cuadrado.style = "border: 1px solid black; height: 35px; width: 35px;"
-    cuadrado.classList.add("cuadrado")
-    columnaContainer.appendChild(cuadrado);
-  };
-  container.appendChild(columnaContainer)
-}
 
-let filas = (number) => {
-  let i = 0;
-  while (i < number) {
-    columnas(number)
-    i++
+let grid = (number) => {
+  for (i = 0; i < number; i++) {
+    let boxContainer = document.createElement("div")
+    boxContainer.classList.add("boxContainer"); 
+    container.appendChild(boxContainer);
+    for (j = 0; j < number; j++) {
+      let caja = document.createElement("div");
+      caja.classList.add("caja")
+      boxContainer.appendChild(caja)
+      caja.addEventListener('mouseover', (e) => {
+        caja.style = 'background-color: red'
+      })
+    }
   }
 }
 
-filas(16);
+grid(16)
