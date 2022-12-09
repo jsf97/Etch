@@ -1,6 +1,7 @@
 let container = document.querySelector(".container");
 container.style = "display:flex;"
-
+let manyGrids = document.querySelector(".many-divs");
+let clean = document.querySelector(".clean")
 
 let grid = (number) => {
   for (i = 0; i < number; i++) {
@@ -12,10 +13,17 @@ let grid = (number) => {
       caja.classList.add("caja")
       boxContainer.appendChild(caja)
       caja.addEventListener('mouseover', (e) => {
-        caja.style = 'background-color: red'
+        caja.style = `background-color: rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)});`
       })
+      clean.addEventListener('click', () => {
+        caja.style = 'background-color: white;'
+      }) 
     }
   }
 }
+ manyGrids.addEventListener('click', (e) => {
+   let cantidad = prompt("De cuantas grillas querés?")
+   container.textContent = ""
+   grid(cantidad);
+ })
 
-grid(16)
